@@ -34,14 +34,10 @@ def get_data(url=""):
     x = [x.text for x in div_title]
     y = [y.text for y in div_text]
     data = {
-        "url":url,
-        x[0]:y[0],
-        x[1]:y[1],
-        x[2]:y[2],
-        x[3]:y[3],
-        x[4]:y[4],
-        x[5]:y[5]
+        "url":url
         }
+    for a in range(len(x)):
+        data[x[a]] = y[a]
     return data
 
 
@@ -62,8 +58,10 @@ def main():
             "hind-kinolar" # 4
             ]
     for name in names:
+        print(f"[+] Run {name=}")
         k = number_pages(name)
         siteurl(name, k)
+        print("[+]","="*20,"[+]")
     
 
 if __name__=="__main__":
